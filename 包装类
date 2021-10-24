@@ -1,11 +1,10 @@
-相关类：String，StringBuffer，StringBuilder
+相关类：
        Byte Short Integer Long
        Float Double
        Character
        Boolean
-       
-a.包装类：  
-
+基本数据包装类有自动装拆箱机制，任何能用基本类型的地方，都可以用对应包装类，反之亦然。
+*但方法的参数类型始终是不变的
 //////////////////////////////////
 
 数值型包装类公共方法名与数据域名：
@@ -46,19 +45,23 @@ a.包装类：
         //同类型比较（只能为对应基本数据类型，如果不是必须显式转换）
         i.compareTo(9);//大于返回1，小于返回-1，等于返回0
         
-        //将对应数值字符串转换为对应包装类
+        //将对应数值字符串转换为对应包装类     //Integer.parseInt(String s,int index/String s);
         int temp7=Integer.parseInt("134");
         int temp8=Integer.parseInt("15",16);//前一个表示要转换的数值字符串，后一个表示要转换的进制,temp8表示对应的十进制数21
         
-        //静态方法，创建一个新对象，并将它初始化为指定字符串表示的值
+        //静态方法，创建一个新对象，并将它初始化为指定字符串表示的值  //Integer.valueOf(int i/String s,int index/String s);
         Integer temp9=Integer.valueOf(8);
         Integer temp10=Integer.valueOf("8");
         Integer temp11=Integer.valueOf("8",16);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
     Double：
-      Double i=9.0;//自动装箱
+        Double i=9.0;//自动装箱
+        Double j=new Double("9");
+        Double m=new Double(9);//不推荐，因为有自动装拆箱机制
+        
         System.out.println(Double.MAX_VALUE);//包装类对应基本数据类型的最大值
         System.out.println(Double.MIN_VALUE);//包装类对应基本数据类型的最大值
+        
         //类型转换,返回对应类型
         byte temp=i.byteValue();
         short temp1=i.shortValue();
@@ -67,12 +70,43 @@ a.包装类：
         float temp4=i.floatValue();
         double temp5=i.doubleValue();
         String temp6=i.toString();
+        
         //同类型比较（只能为对应基本数据类型，如果不是必须显式转换）
-        i.compareTo(9.0);//大于返回1，小于返回-1，等于返回0
-        //将对应数值字符串转换为对应包装类
-        Double temp7=Double.parseDouble("134");
+        i.compareTo(9.0);//大于返回1，小于返回-1，等于返回0       //i.compareTo(double d)
+        
         //静态方法，创建一个新对象，并将它初始化为指定字符串表示的值
-        Double temp9=Double.valueOf(8);
+        Double temp7=Double.parseDouble("134");      //Double.parseDouble(String s)
+        
+        //静态方法，创建一个新对象，并将它初始化为指定字符串表示的值
+        Double temp9=Double.valueOf(8);              //Double.parseDouble(String s/double i)
         Double temp10=Double.valueOf("8.0");
-        //静态方法，创建一个新对象，并将它初始化为指定字符串表示的值
-        Double.parseDouble("1");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2.字符型包装类：
+    Character：
+       //字符测试的静态方法，codepoint的范围在0~0xFFFF之间
+       
+       // Character.isDigit(char c/int codepoint);
+        Character.isDigit('a');
+        Character.isDigit(65);
+       // Character.isLetter(char c/int codepoint);
+        Character.isLetter('a');
+        Character.isLetter(65);
+       // Character.isLetterOrDigit(char c/int codepoint); 
+        Character.isLetterOrDigit('a');
+        Character.isLetterOrDigit(65);
+       // Character.isLowerCase(char c/int codepoint);
+        Character.isLowerCase(65);
+        Character.isLowerCase('a');
+       // Character.isUpperCase(char c/int codepoint); 
+        Character.isUpperCase('a');
+        Character.isUpperCase(65)；  
+        
+          ///////////////////////////////////转换大小写
+       // Character.toLowerCase(char c/int codepoint); 
+        Character.toLowerCase(65);
+        Character.toLowerCase('a');
+       // Character.toUpperCase(char c/int codepoint); 
+        Character.toUpperCase(65);
+        Character.toUpperCase('A');
+       
